@@ -1,0 +1,5 @@
+1. ZIP dosyasini tamamen klasore cikarin.
+2. REPOYU_TEMIZDEN_YUKLE.cmd dosyasini calistirin.
+3. Bu komut GitHub deposunun main dalini temiz v2.2.2 ile degistirir.
+4. GitHub Actions otomatik baslar.
+5. Yesil calismanin Artifacts bolumunden Setup ZIP dosyasini indirin.
