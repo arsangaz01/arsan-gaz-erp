@@ -1,0 +1,32 @@
+name: Windows Setup ve Release
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    tags: ['v*.*.*']
+permissions:
+  contents: write
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: package.json dogrula
+        run: node -e "JSON.parse(require('fs').readFileSync('package.json','utf8'))"
+      - name: Bagimliliklari yukle
+        run: npm install --no-audit --no-fund
+      - name: Windows Setup olustur
+        run: npm run dist:win
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ArsanGaz-ERP-Windows-Setup
+          path: dist/*.exe
+          if-no-files-found: error
+      - name: GitHub Releases alanina yayinla
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: npm run release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

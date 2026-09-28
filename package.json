@@ -1,0 +1,65 @@
+{
+  "name": "arsan-gaz-erp",
+  "version": "3.0.0",
+  "description": "Arsan Gaz ERP ve yerel ajan sistemi",
+  "main": "main.js",
+  "author": "Arsan Gaz",
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arsangaz01/arsan-gaz-erp.git"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win nsis --x64 --publish never",
+    "release": "electron-builder --win nsis --x64 --publish always"
+  },
+  "dependencies": {
+    "electron-updater": "6.6.2"
+  },
+  "devDependencies": {
+    "electron": "44.4.5",
+    "electron-builder": "26.0.12"
+  },
+  "build": {
+    "appId": "com.arsangaz.erp",
+    "productName": "Arsan Gaz ERP",
+    "asar": true,
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "ArsanGaz_ERP_Setup_${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Arsan Gaz ERP"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "arsangaz01",
+        "repo": "arsan-gaz-erp",
+        "releaseType": "release"
+      }
+    ]
+  }
+}

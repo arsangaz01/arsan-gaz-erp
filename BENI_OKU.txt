@@ -1,0 +1,5 @@
+Arsan Gaz ERP v3.0.0
+1) ZIP dosyasini tamamen cikarin.
+2) REPOYU_TEMIZDEN_YUKLE.cmd calistirin.
+3) Actions tamamlaninca v3.0.0 artifact veya Release Setup dosyasini indirin.
+4) Eski 2.2.2 surumunun uzerine kurun. Yerel veriler farkli veri anahtari kullanildigi icin v3 ilk acilista yenidir.

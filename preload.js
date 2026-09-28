@@ -1,0 +1,1 @@
+const{contextBridge,ipcRenderer}=require('electron');contextBridge.exposeInMainWorld('desktopAPI',{version:()=>ipcRenderer.invoke('app-version'),checkUpdate:()=>ipcRenderer.invoke('check-update'),saveBackup:d=>ipcRenderer.invoke('save-backup',d),openExternal:u=>ipcRenderer.invoke('open-external',u),onUpdateStatus:cb=>ipcRenderer.on('update-status',(_,v)=>cb(v))});
